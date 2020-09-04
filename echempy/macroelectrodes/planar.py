@@ -65,6 +65,7 @@ class Voltammogram(Electrosystem):
         plt.title('Ciclyc Voltammetry')
         plt.ylabel('Current intensity')
         plt.xlabel('Voltage')
+        plt.show()
         return
 
     def export_vlt(self, filename):
@@ -245,10 +246,10 @@ class Ciclyc_voltammetry(Voltammogram):
         # Output
         self.voltage, self.current = Voltage, Current
         self.concentration, self.time = Concentration, Time
-        self.params = {'ei': ei, 'es': es, 'Scanr': scanr, 'DX': DX, 'DT': DT, 'grid': grid}
+        self.params = {'ei': ei, 'es': es, 'Scanr': scanr, 'DX': DX, 'DT': DT, 'omega': omega}
         return self
 
-    def butlervolmer(self, ei , es, scanr, a = 0.5, k0 = 1e8, DX = 1e-3, DT = 1e-6, omega = 1.1 ):
+    def butlervolmer(self, ei , es, scanr, a = 0.5, k0 = 1e8, DX = 1e-3, DT = 1e-6, omega = 1.1):
         """
         It solves the dimensionless difussional cyclic voltammetry of an oxidated species (A) of reversible, quasi-reversible
         and non-reversible systems, under the following considerations :
@@ -283,7 +284,7 @@ class Ciclyc_voltammetry(Voltammogram):
             Spatial_points.append(Spatial_points[-1] + h)
             h *= omega
         n = len(Spatial_points)
-        alpha, beta, gama = np.zeros(n), np.zeros(n), np.zeros(n)  # Thomas coefficients
+        alpha, beta, gamma = np.zeros(n), np.zeros(n), np.zeros(n)  # Thomas coefficients
         for i in range(1, n - 1):
             DX_m = Spatial_points[i] - Spatial_points[i - 1]
             DX_p = Spatial_points[i + 1] - Spatial_points[i]
@@ -359,7 +360,7 @@ class Cronoamperometry(Cronoamperogram):
         m = len(Time_points)
         Spatial_points = [0] # Spatial grid
         h = DX
-        while Spatial_points[-1] < 6 * np.sqrt(time):  # Diffusion_layer's length
+        while Spatial_points[-1] < 6 * np.sqrt(Time):  # Diffusion_layer's length
             Spatial_points.append(Spatial_points[-1] + h)
             h = h * omega_x
         n = len(Spatial_points)
