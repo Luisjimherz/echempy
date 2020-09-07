@@ -9,6 +9,6 @@ setup(name='echempy',
                    'Programming Language :: Python :: 3'],
       url='https://github.com/Luisjimherz/echempy.git',
       packages=['echempy'],
-      install_requires=[],
+      install_requires=['numpy', 'matplotlib', 'csv'],
       include_package_data=True,
       zip_safe=False)
