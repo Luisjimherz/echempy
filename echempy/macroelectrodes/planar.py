@@ -402,10 +402,3 @@ class Chronoamperometry(Chronoamperogram):
         self.concentration, self.time = Concentration, Time
         self.params = {'e': e, 'time': Time, 'a': a, 'K0': k0, 'DX': DX, 'omega_x': omega_x, ' DT': DT, 'omega_t': omega_t}
         return self
-
-class myClass():
-    def __init__(self):
-        self.my_attribute = None
-
-    def my_metho(self):
-        self.my_attribute = 'String'
