@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4e5f411-6b14-428c-981c-cc3485cf7c82" name="Default Changelist" comment="url added to setup file" />
+    <list default="true" id="f4e5f411-6b14-428c-981c-cc3485cf7c82" name="Default Changelist" comment="url added to setup file">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" beforeDir="false" afterPath="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +30,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/setup.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -39,7 +45,7 @@
       <recent name="C:\Users\luisf\Documents\GitHub\echempy\echempy" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.planar">
+  <component name="RunManager" selected="Python.test">
     <configuration name="planar" type="PythonConfigurationType" factoryName="Python">
       <module name="echempy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -48,11 +54,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Program Files (x86)\Python38-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/echempy" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/echempy/macroelectrodes" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\luisf\Documents\GitHub\echempy\echempy\macroelectrodes\planar.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -105,8 +111,8 @@
     </configuration>
     <list>
       <item itemvalue="Python.planar" />
-      <item itemvalue="Python.setup" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.setup" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -121,57 +127,89 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="422" y="38" width="1089" height="786" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599257320202">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2226" y="42" key="#Inspections" timestamp="1599773566629">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state x="2226" y="42" key="#Inspections/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599773566629" />
+    <state x="2294" y="9" width="965" height="719" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599753187626">
+      <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state x="422" y="38" width="1089" height="786" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599257320202" />
+    <state x="2294" y="9" width="965" height="719" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599753187626" />
     <state x="543" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599259436852">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="543" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259436852" />
-    <state x="989" y="57" key="FileChooserDialogImpl" timestamp="1599257317240">
+    <state x="522" y="319" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog" timestamp="1599787468713">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="989" y="57" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599257317240" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1599259712887">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712887" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1599259712888">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599259712888" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1599250040012">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599250040012" />
-    <state x="2443" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1599515901584">
+    <state x="522" y="319" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599787468713" />
+    <state x="2796" y="50" key="FileChooserDialogImpl" timestamp="1599753184006">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
+    <state x="989" y="57" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599257317240" />
+    <state x="2796" y="50" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599753184006" />
+    <state width="1515" height="24" key="GridCell.Tab.0.bottom" timestamp="1599794587230">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852428" />
+    <state width="1515" height="24" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
+    <state width="1515" height="24" key="GridCell.Tab.0.center" timestamp="1599794587230">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
+    <state width="1515" height="24" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
+    <state width="1515" height="24" key="GridCell.Tab.0.left" timestamp="1599794587230">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
+    <state width="1515" height="24" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
+    <state width="1515" height="24" key="GridCell.Tab.0.right" timestamp="1599794587230">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
+    <state width="1515" height="24" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
+    <state width="1515" height="24" key="GridCell.Tab.1.bottom" timestamp="1599794587232">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="24" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
+    <state width="1515" height="24" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
+    <state width="1515" height="24" key="GridCell.Tab.1.center" timestamp="1599794587232">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="24" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
+    <state width="1515" height="24" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
+    <state width="1515" height="24" key="GridCell.Tab.1.left" timestamp="1599794587231">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="24" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
+    <state width="1515" height="24" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587231" />
+    <state width="1515" height="24" key="GridCell.Tab.1.right" timestamp="1599794587232">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state width="1515" height="24" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
+    <state width="1515" height="24" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
+    <state x="2180" y="106" key="IDE.errors.dialog" timestamp="1599773526993">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state x="2180" y="106" key="IDE.errors.dialog/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599773526993" />
+    <state x="2165" y="17" width="981" height="766" key="SettingsEditor" timestamp="1599754661205">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state x="396" y="28" width="981" height="766" key="SettingsEditor/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599670075964" />
+    <state x="2165" y="17" key="SettingsEditor/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599754661205" />
+    <state x="660" y="285" width="609" height="281" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1599670074796">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="660" y="285" width="609" height="281" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599670074796" />
+    <state x="591" y="169" key="refactoring.ChangeSignatureDialog" timestamp="1599787436833">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="591" y="169" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599787436833" />
     <state x="2443" y="149" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599515901584" />
+    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599771171765">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599771171765" />
   </component>
 </project>
