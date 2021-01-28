@@ -27,34 +27,37 @@ import matplotlib.pyplot as plt
 
 class ElectroSystem:
     def __init__(self):
-        self.voltage = []  # List of voltage values
-        self.time = []  # List of time values
-        self.current = []  # List of current values
-        self.concentration = []  # List of concentration values
+        self.voltage = None  # Container for voltage values
+        self.time = None   # container for time values
+        self.current = None  # Container for electric current values
+        self.concentration = None  # Container for concentration values
         self.params = {'Experimental': {},
                        'Kinetics': {},
                        'Accuracy': {}}
-        self.__plot_kind__ = {'vlt': ('Voltage', 'Current'),
-                              'cvlt': ('Voltage', 'Concentration'),
-                              'amp': ('Time', 'Current'),
-                              'camp': ('Time', 'Concentration')}
+        self.experiment = None
+        self._experiment_format = None
+        self._format = {'vlt': ('Voltage', 'Current'),
+                        'cvlt': ('Voltage', 'Concentration'),
+                        'amp': ('Time', 'Current'),
+                        'camp': ('Time', 'Concentration')}
+        self.__data = None
 
     def setdata(self):
-        self.__data__ = {'vlt': (self.voltage, self.current),
-                         'cvlt': (self.voltage, self.concentration),
-                         'amp': (self.time, self.current),
-                         'camp': (self.time, self.concentration)}
+        self.__data = {'vlt': (self.voltage, self.current),
+                       'cvlt': (self.voltage, self.concentration),
+                       'amp': (self.time, self.current),
+                       'camp': (self.time, self.concentration)}
 
     def display(self, plot=None):
-        """display() method makes a plot of either Current/Concentration vs Voltage/Time"""
-        plot = self.experiment_id if plot is None else plot
+        """Makes a plot of either Current/Concentration vs Voltage/Time"""
+        plot = self._experiment_format if plot is None else plot
         try:
-            x_header, y_header = self.__plot_kind__[plot]
-            x_column, y_column = self.__data__[plot]
+            x_header, y_header = self._format[plot]
+            x_column, y_column = self.__data[plot]
         except KeyError:
             raise KeyError('Not a valid plotting request')
         except AttributeError:
-            raise AttributeError('You must perform a simulation prior to displaying a graph')
+            raise AttributeError('No experiment have been run yet')
         plt.plot(x_column, y_column)
         plt.title(self.experiment)
         plt.xlabel(x_header)
@@ -63,14 +66,14 @@ class ElectroSystem:
 
     def sendto(self, filename, kind=None):
         """Export simulated results into a csv file"""
-        kind = self.experiment_id if kind is None else kind
+        kind = self._experiment_format if kind is None else kind
         try:
-            x_header, y_header = self.__plot_kind__[kind]
-            x_column, y_column = self.__data__[kind]
+            x_header, y_header = self._format[kind]
+            x_column, y_column = self.__data[kind]
         except KeyError:
-            raise KeyError('exp parameter should match either vlt, cvlt, camp or camp')
+            raise KeyError('Not a valid exporting format')
         except AttributeError:
-            raise AttributeError('You must perform a simulation prior to displaying a graph')
+            raise AttributeError('No experiment have been run yet')
         with open(filename, 'w', newline='') as file:
             file.write('Experiment:, %s' % self.experiment)
             file.write('\nParameters:\n')
@@ -81,7 +84,7 @@ class ElectroSystem:
                 file.write('\n')
             file.write('\n')
             for column in (x_header, y_header):
-                file.write('%s,' % (column))
+                file.write('%s,' % column)
             file.write('\n')
             for x, y in zip(x_column, y_column):
                 file.write('%s,%s,\n' % (x, y))
@@ -90,15 +93,15 @@ class ElectroSystem:
 class Voltammogram(ElectroSystem):
     def __init__(self):
         ElectroSystem.__init__(self)
-        self.experiment_id = 'vlt'
+        self._experiment_format = 'vlt'
 
 
 class Chronoamperogram(ElectroSystem):
     def __init__(self):
         ElectroSystem.__init__(self)
-        for item in ('vlt', 'cvlt'):
-            self.__plot_kind__.pop(item)
-        self.experiment_id = 'amp'
+        for item in ('vlt', 'cvlt'):  # Remove useful plot/export formats
+            self._format.pop(item)
+        self._experiment_format = 'amp'
 
 
 class CyclicVoltammetry(Voltammogram):
@@ -134,32 +137,28 @@ class CyclicVoltammetry(Voltammogram):
         ei = self.params['Experimental']['ei']
         es = self.params['Experimental']['es']
         scanr = self.params['Experimental']['scanr']
-        time = 2 * np.abs(es - ei) / scanr  # Experiment's lasting time
-        cell_len = 6 * np.sqrt(time)  # Cell's length
-        n = int(cell_len / DX)  # Number of points to simulate in spacial mesh
-        m = int(time / DT)  # Number of points to simulate in temporal mesh
+        time = 2 * np.abs(es - ei) / scanr
+        cell_len = 6 * np.sqrt(time)  # Maximum diffusion layer size
+        n = int(cell_len / DX)  # Spatial grid
+        m = int(time / DT)  # Time grid
         De = 2 * np.abs(es - ei) / m  # Potential step
         lmbd = DT / DX ** 2  # Lambda parameter for numeric method
-        Concentration_old = np.ones(n)  # Concentration of species A at k-1
-        Concentration_new = np.ones(n)  # Concentration of species A at k
-        self.current = np.zeros(m)  # Simulated current over time
-        self.voltage = np.zeros(m)  # Applied voltage over time
-        self.concentration = np.ones(m)  # Concentration (species A) near the electrode over time
+        con_old = np.ones(n)  # Former concentration
+        con_new = np.ones(n)  # Current concentration
+        self.current = np.zeros(m)
+        self.voltage = np.zeros(m)
+        self.concentration = np.ones(m)
         self.time = [t for t in range(m)]
-        self.voltage[-1] = ei  # if an error try Voltage[0] y range(1, m)
+        self.voltage[-1] = ei
         for k in range(m):  # Numerical Solution
-            if k < m / 2:
-                self.voltage[k] = self.voltage[k - 1] - De
-            else:
-                self.voltage[k] = self.voltage[k - 1] + De
-            Concentration_new[0] = 1 / (1 + np.exp(-self.voltage[k]))
+            self.voltage[k] = self.voltage[k - 1] - De if k < m / 2 else self.voltage[k - 1] + De
+            con_new[0] = 1 / (1 + np.exp(-self.voltage[k]))
             for i in range(1, n - 1):
-                Concentration_new[i] = Concentration_old[i] + lmbd * (Concentration_old[i + 1] - 2 * Concentration_old[i] + Concentration_old[i - 1])
-            self.concentration[k] = Concentration_new[0]
-            self.current[k] = -(-Concentration_new[2] + 4 * Concentration_new[1] - 3 * Concentration_new[0]) / (2 * DX)
-            Concentration_old = Concentration_new
-        # Output
-        self.setdata()
+                con_new[i] = con_old[i] + lmbd * (con_old[i + 1] - 2 * con_old[i] + con_old[i - 1])
+            self.concentration[k] = con_new[0]
+            self.current[k] = -(-con_new[2] + 4 * con_new[1] - 3 * con_new[0]) / (2 * DX)
+            con_old = con_new
+        self.setdata()  # Output
         return self
 
     def nernst(self, DX=1e-3, DT=1e-6, omega=1.1):
@@ -191,11 +190,11 @@ class CyclicVoltammetry(Voltammogram):
         ei = self.params['Experimental']['ei']
         es = self.params['Experimental']['es']
         scanr = self.params['Experimental']['scanr']
-        time = 2 * np.abs(es - ei) / scanr  # Experiment's lasting time
-        cell_len = 6 * np.sqrt(time)  # Cell's length
-        m = int(time / DT)  # Temporal mesh
+        time = 2 * np.abs(es - ei) / scanr
+        cell_len = 6 * np.sqrt(time)  # Maximum diffusion layer's size
+        m = int(time / DT)  # Temporal grid
         De = 2 * np.abs(es - ei) / m  # Potential step
-        if omega == 1:  # Spatial mesh
+        if omega == 1:  # Spatial grid
             n = int(cell_len / DX)
             lmbd = DT / DX ** 2  # Lambda parameter for numeric method
             # Thomas coefficients
@@ -212,7 +211,7 @@ class CyclicVoltammetry(Voltammogram):
                 Spatial_points.append(Spatial_points[-1] + h)
                 h *= omega
             n = len(Spatial_points)
-            alpha = np.zeros(n)  # Thomas coefficients
+            alpha = np.zeros(n)
             beta = np.zeros(n)
             gamma = np.zeros(n)
             for i in range(1, n - 1):
@@ -224,34 +223,30 @@ class CyclicVoltammetry(Voltammogram):
             Gamma = np.zeros(n)  # Modified gamma coefficient
             for i in range(1, n - 1):
                 Gamma[i] = gamma[i] / (beta[i] - Gamma[i - 1] * alpha[i])
-        Concentration_space = np.ones(n)  # Concentration of species A through space
+        con = np.ones(n)  # Spatial changes in concentration
         self.current = np.zeros(m)
         self.voltage = np.zeros(m)
-        self.concentration = np.ones(m)  # Concentration of species A through time
+        self.concentration = np.ones(m)
         self.time = [t for t in range(m)]
-        self.voltage[-1] = ei  # if there is an error try Voltage[0] and range(1, m)
+        self.voltage[-1] = ei
         for k in range(m):
-            if k < m / 2:
-                self.voltage[k] = self.voltage[k-1] - De
-            else:
-                self.voltage[k] = self.voltage[k-1] + De
+            self.voltage[k] = self.voltage[k - 1] - De if k < m / 2 else self.voltage[k - 1] + De
             # Forward swept
-            Concentration_space[0] = 1 / (1 + np.exp(-self.voltage[k]))
+            con[0] = 1 / (1 + np.exp(-self.voltage[k]))
             for i in range(1, n - 1):
-                Concentration_space[i] = (Concentration_space[i] - Concentration_space[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
+                con[i] = (con[i] - con[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
             # Back substitution
             for i in range(n - 2, -1, -1):
-                Concentration_space[i] = Concentration_space[i] - Gamma[i] * Concentration_space[i + 1]
-            self.current[k] = -(-Concentration_space[2] + 4 * Concentration_space[1] - 3 * Concentration_space[0]) / (2 * DX)
-            self.concentration[k] = Concentration_space[0]
-        # Output
-        self.setdata()
+                con[i] = con[i] - Gamma[i] * con[i + 1]
+            self.current[k] = -(-con[2] + 4 * con[1] - 3 * con[0]) / (2 * DX)
+            self.concentration[k] = con[0]
+        self.setdata()  # Output
         return self
 
     def butlervolmer(self, a=0.5, k0=1e8, DX=1e-3, DT=1e-6, omega=1.1):
         """
-        It solves the dimensionless diffusional cyclic voltammetry of an oxidized species (A) of reversible, quasi-reversible
-        and non-reversible systems, under the following considerations :
+        It solves the dimensionless diffusional cyclic voltammetry of an oxidized species (A) of reversible, and
+        non-reversible systems, under the following considerations :
            1. E-mechanism A (oxidized) <-> B (reduced)
            2. One-electron transfer process
            3. Reaction kinetics described by Butler-Volmer model
@@ -278,12 +273,12 @@ class CyclicVoltammetry(Voltammogram):
         ei = self.params['Experimental']['ei']
         es = self.params['Experimental']['es']
         scanr = self.params['Experimental']['scanr']
-        time = 2 * np.abs(es - ei) / scanr  # Experiment's lasting time
-        cell_len = 6 * np.sqrt(time)  # Cell's length
-        m = int(time / DT)  # Temporal mesh
+        time = 2 * np.abs(es - ei) / scanr
+        cell_len = 6 * np.sqrt(time)  # Maximum diffusion layer's s9ze
+        m = int(time / DT)  # Temporal grid
         De = 2 * np.abs(es - ei) / m  # Potential step
         h = DX
-        Spatial_points = [0]  # Spatial mesh
+        Spatial_points = [0]  # Spatial grid
         while Spatial_points[-1] < cell_len:
             Spatial_points.append(Spatial_points[-1] + h)
             h *= omega
@@ -296,32 +291,28 @@ class CyclicVoltammetry(Voltammogram):
             gamma[i] = - (2 * DT) / (DX_p * (DX_m + DX_p))
             beta[i] = 1 - alpha[i] - gamma[i]
         Gamma = np.zeros(n)  # Modified gamma coefficient
-        Concentration_space = np.ones(n)  # Concentration of species A through space
+        con = np.ones(n)  # Spatial changes in concentration
         self.current = np.zeros(m)
         self.voltage = np.zeros(m)
-        self.concentration = np.ones(m)  # Concentration of species A through time
+        self.concentration = np.ones(m)
         self.time = [t for t in range(m)]
-        self.voltage[-1] = ei  # if there is an error try Voltage[0] and range(1, m)
+        self.voltage[-1] = ei
         for k in range(m):
-            if k < m / 2:
-                self.voltage[k] = self.voltage[k - 1] - De
-            else:
-                self.voltage[k] = self.voltage[k - 1] + De
+            self.voltage[k] = self.voltage[k - 1] - De if k < m / 2 else self.voltage[k - 1] + De
             # Forward swept
             beta[0] = 1 + (DX * np.exp(-a * self.voltage[k]) * k0 * (1 + np.exp(self.voltage[k])))
             Gamma[0] = -1 / beta[0]
             for i in range(1, n - 1):
                 Gamma[i] = gamma[i] / (beta[i] - Gamma[i - 1] * alpha[i])
-            Concentration_space[0] = (DX * np.exp(-a * self.voltage[k]) * k0 * np.exp(self.voltage[k])) / beta[0]
+            con[0] = (DX * np.exp(-a * self.voltage[k]) * k0 * np.exp(self.voltage[k])) / beta[0]
             for i in range(1, n-1):
-                Concentration_space[i] = (Concentration_space[i] - Concentration_space[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
+                con[i] = (con[i] - con[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
             # Back substitution
             for i in range(n - 2, -1, -1):
-                Concentration_space[i] = Concentration_space[i] - Gamma[i] * Concentration_space[i+1]
-            self.current[k] = -(Concentration_space[1] - Concentration_space[0]) / Spatial_points[1] - Spatial_points[0]
-            self.concentration[k] = Concentration_space[0]
-        # Output
-        self.setdata()
+                con[i] = con[i] - Gamma[i] * con[i+1]
+            self.current[k] = -(con[1] - con[0]) / Spatial_points[1] - Spatial_points[0]
+            self.concentration[k] = con[0]
+        self.setdata()  # Output
         return self
 
 
@@ -333,8 +324,8 @@ class Chronoamperometry(Chronoamperogram):
 
     def butlervolmer(self, a=0.5, k0=1e8, DT=1e-12, DX=1e-6, omega_x=1.1, omega_t=1.1):
         """
-        It solves the dimensionless diffusional chronoamperometry of an oxidized species (A) of reversible, quasi-reversible
-        and non-reversible systems, under the following considerations :
+        It solves the dimensionless diffusional chronoamperometry of an oxidized species (A) of reversible, and
+        non-reversible systems, under the following considerations :
            1. E-mechanism A (oxidized) <-> B (reduced)
            2. One-electron transfer process
            3. Reaction kinetics described by Butler-Volmer model
@@ -343,7 +334,7 @@ class Chronoamperometry(Chronoamperogram):
            6. Planar macroelectrode as working electrode
            7. Diffusion of species in one spatial dimension
            8. Equal diffusion coefficients
-       Numerical method: Implicit approach of finite differences with expansive spatial, and temporal grids ( Solution of
+       Numerical method: Implicit approach of finite differences with expansive spatial, and temporal grids (Solution of
        PDE -> Linear system through an LU Decomposition algorithm (Thomas algorithm))
 
        Parameters:
@@ -368,7 +359,7 @@ class Chronoamperometry(Chronoamperogram):
         m = len(self.time)
         Spatial_points = [0]  # Spatial grid
         h = DX
-        while Spatial_points[-1] < 6 * np.sqrt(Time):  # Diffusion_layer's length
+        while Spatial_points[-1] < 6 * np.sqrt(Time):  # Maximum Diffusion_layer's length
             Spatial_points.append(Spatial_points[-1] + h)
             h = h * omega_x
         n = len(Spatial_points)
@@ -386,24 +377,23 @@ class Chronoamperometry(Chronoamperogram):
                 gamma[i] = - 2 * DT / DX
                 beta[i] = 1 - alpha[i] - gamma[i]
         Gamma = np.zeros(n)  # Modified gamma coefficient
-        Concentration_space = np.zeros(n)  # Concentration of species A through space
+        con = np.zeros(n)  # Spatial changes in concentration
         self.voltage = [e for t in range(m)]
         self.current = np.zeros(m)
-        self.concentration = np.zeros(m)  # Concentration of species A through time
+        self.concentration = np.zeros(m)
         for k in range(m):
             # Forward sweep
             beta[0] = 1 + (DX * np.exp(-(a * e)) * k0 * (1 + np.exp(e)))
             Gamma[0] = -1 / beta[0]  # Modified gamma coefficients initialization
             for i in range(1, n - 1):
                 Gamma[i] = gamma[i] / (beta[i] - Gamma[i - 1] * alpha[i])
-            Concentration_space[0] = (DX * np.exp(-(a * e)) * k0 * np.exp(e)) / beta[0]
+            con[0] = (DX * np.exp(-(a * e)) * k0 * np.exp(e)) / beta[0]
             for i in range(1, n - 1):
-                Concentration_space[i] = (Concentration_space[i] - Concentration_space[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
+                con[i] = (con[i] - con[i - 1] * alpha[i]) / (beta[i] - Gamma[i - 1] * alpha[i])
             # Back substitution
             for i in range(n - 2, -1, -1):
-                Concentration_space[i] = Concentration_space[i] - Gamma[i] * Concentration_space[i + 1]
-            self.current[k] = -(Concentration_space[1] - Concentration_space[0]) / (Spatial_points[1] - Spatial_points[0])
-            self.concentration[k] = Concentration_space[0]
-        # Output
-        self.setdata()
+                con[i] = con[i] - Gamma[i] * con[i + 1]
+            self.current[k] = -(con[1] - con[0]) / (Spatial_points[1] - Spatial_points[0])
+            self.concentration[k] = con[0]
+        self.setdata()  # Output
         return self

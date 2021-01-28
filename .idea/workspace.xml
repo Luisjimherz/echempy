@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4e5f411-6b14-428c-981c-cc3485cf7c82" name="Default Changelist" comment="url added to setup file">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" beforeDir="false" afterPath="$PROJECT_DIR$/echempy/macroelectrodes/planar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,46 +146,46 @@
     </state>
     <state x="989" y="57" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599257317240" />
     <state x="2796" y="50" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599753184006" />
-    <state width="1515" height="24" key="GridCell.Tab.0.bottom" timestamp="1599794587230">
+    <state width="1339" height="222" key="GridCell.Tab.0.bottom" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="214" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852428" />
-    <state width="1515" height="24" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
-    <state width="1515" height="24" key="GridCell.Tab.0.center" timestamp="1599794587230">
+    <state width="1339" height="222" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
+    <state width="1339" height="222" key="GridCell.Tab.0.center" timestamp="1599835446111">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="214" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
-    <state width="1515" height="24" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
-    <state width="1515" height="24" key="GridCell.Tab.0.left" timestamp="1599794587230">
+    <state width="1339" height="222" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446111" />
+    <state width="1339" height="222" key="GridCell.Tab.0.left" timestamp="1599835446111">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="214" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
-    <state width="1515" height="24" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
-    <state width="1515" height="24" key="GridCell.Tab.0.right" timestamp="1599794587230">
+    <state width="1339" height="222" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446111" />
+    <state width="1339" height="222" key="GridCell.Tab.0.right" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="214" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599792852427" />
-    <state width="1515" height="24" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587230" />
-    <state width="1515" height="24" key="GridCell.Tab.1.bottom" timestamp="1599794587232">
+    <state width="1339" height="222" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
+    <state width="1339" height="222" key="GridCell.Tab.1.bottom" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="24" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
-    <state width="1515" height="24" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
-    <state width="1515" height="24" key="GridCell.Tab.1.center" timestamp="1599794587232">
+    <state width="1339" height="222" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
+    <state width="1339" height="222" key="GridCell.Tab.1.center" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="24" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
-    <state width="1515" height="24" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
-    <state width="1515" height="24" key="GridCell.Tab.1.left" timestamp="1599794587231">
+    <state width="1339" height="222" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
+    <state width="1339" height="222" key="GridCell.Tab.1.left" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="24" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
-    <state width="1515" height="24" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587231" />
-    <state width="1515" height="24" key="GridCell.Tab.1.right" timestamp="1599794587232">
+    <state width="1339" height="222" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
+    <state width="1339" height="222" key="GridCell.Tab.1.right" timestamp="1599835446112">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
     <state width="1515" height="24" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599791113780" />
-    <state width="1515" height="24" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599794587232" />
+    <state width="1339" height="222" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599835446112" />
     <state x="2180" y="106" key="IDE.errors.dialog" timestamp="1599773526993">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
@@ -202,14 +199,40 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="660" y="285" width="609" height="281" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599670074796" />
-    <state x="591" y="169" key="refactoring.ChangeSignatureDialog" timestamp="1599787436833">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="591" y="169" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599787436833" />
-    <state x="2443" y="149" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599515901584" />
-    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599771171765">
+    <state x="2443" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1599833968899">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
-    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599771171765" />
+    <state x="591" y="169" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1599787436833" />
+    <state x="2443" y="149" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599833968899" />
+    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599832523912">
+      <screen x="1920" y="0" width="1360" height="728" />
+    </state>
+    <state x="2263" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1360.728@1920.0.1360.728" timestamp="1599832523912" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_venv/_test_.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_venv/_test_.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_venv/_test_.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/echempy/macroelectrodes/planar.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
